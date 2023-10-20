@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "956569305099",
+    "project_id": "testorder-e88d1",
+    "storage_bucket": "testorder-e88d1.appspot.com",
+    "firebase_url": "https://testorder-e88d1-default-rtdb.firebaseio.com/"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956569305099:android:fa73a5808e36deb828470e",
+        "android_client_info": {
+          "package_name": "com.example.testorder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBH3hwrJohejhN7l8TOhbM10HyeYXOCCD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
