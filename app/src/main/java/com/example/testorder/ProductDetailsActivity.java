@@ -15,6 +15,7 @@ import com.example.testorder.Model.Products;
 import com.example.testorder.Prevalent.Prevalent;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +34,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private ImageView product_Image_Detail;
     private NumberPicker number_picker;
     private TextView product_Name_Detail, product_Description_Detail, product_Price_Detail;
+    private FloatingActionButton backtoHome_Button;
     private String productID = "";
 
 
@@ -49,6 +51,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         product_Name_Detail = findViewById(R.id.product_Name_Detail);
         product_Description_Detail = findViewById(R.id.product_Description_Detail);
         product_Price_Detail = findViewById(R.id.product_Price_Detail);
+        backtoHome_Button = findViewById(R.id.backtoHomeButton);
 
         getProductDetails(productID);
 
@@ -58,7 +61,15 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 fabAddProductToCart();
             }
         });
+
+        backtoHome_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
+
 
     private void fabAddProductToCart() {
         String quantity = String.valueOf(number_picker.getValue());
