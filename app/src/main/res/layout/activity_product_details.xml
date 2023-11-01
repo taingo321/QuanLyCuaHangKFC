@@ -9,10 +9,10 @@
 
     <ImageView
         android:id="@+id/product_Image_Detail"
-        android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_width="288dp"
+        android:layout_height="234dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher_background"/>
+        android:src="@drawable/happy_family_social_2"/>
     
     <TextView
         android:id="@+id/product_Name_Detail"

@@ -2,6 +2,7 @@ package com.example.testorder;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 
 import com.example.testorder.Fragment.GioHangFragment;
 import com.example.testorder.Fragment.LichSuFragment;
+import com.example.testorder.Fragment.ProfileFragment;
 import com.example.testorder.Fragment.TrangChuFragment;
 import com.example.testorder.Model.Products;
 import com.example.testorder.ViewHolder.ProductViewHolder;
@@ -37,6 +39,7 @@ public class HomeActivity extends AppCompatActivity {
 
     BottomNavigationView botView;
     FrameLayout mFrame;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,8 @@ public class HomeActivity extends AppCompatActivity {
                     loadFragment(new LichSuFragment());
                 } else if (item.getItemId() == R.id.GioHang) {
                     loadFragment(new GioHangFragment());
+                } else if (item.getItemId() == R.id.Profile) {
+                    loadFragment(new ProfileFragment());
                 }
 
                 return true;

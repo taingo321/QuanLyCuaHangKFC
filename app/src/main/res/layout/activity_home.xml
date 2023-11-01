@@ -7,12 +7,29 @@
     android:orientation="vertical"
     tools:context=".HomeActivity">
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:cardElevation="5dp"
+        android:elevation="5dp">
 
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_above="@id/frContent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/kfc_logo_mobile"
+                android:layout_marginLeft="15dp"/>
+        </androidx.appcompat.widget.Toolbar>
+    </androidx.cardview.widget.CardView>
 
     <com.rey.material.widget.FrameLayout
         android:id="@+id/frContent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="705dp"
         android:layout_above="@+id/card_view"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:ignore="InvalidId">
