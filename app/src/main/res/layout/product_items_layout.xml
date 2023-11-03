@@ -1,55 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="400dp"
+    android:gravity="center|top"
+    android:layout_gravity="center"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginTop="20dp"
-    android:layout_marginStart="15dp"
-    android:layout_marginEnd="15dp"
-    app:cardElevation="15dp">
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <androidx.cardview.widget.CardView
+        android:layout_width="288dp"
+        android:layout_height="wrap_content"
+        app:cardElevation="8dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="15dp"
+        app:cardCornerRadius="10dp"
+        android:elevation="5dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/product_Image"
+                android:layout_width="288dp"
+                android:layout_height="234dp"
+                android:layout_gravity="center"
+                android:src="@drawable/happy_family_social_2" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/product_Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:text="Product Name"
+                android:maxLines="1"
+                android:maxEms="1"
+                android:ellipsize="end"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/product_Price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/product_Image"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:text="Product Price"
+                android:textColor="@color/DarkRed"
+                android:maxLines="1"
+                android:maxEms="1"
+                android:ellipsize="end"
+                android:layout_marginRight="10dp"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/product_Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/product_Price"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:paddingTop="2dp"
+                android:maxLines="1"
+                android:maxEms="1"
+                android:textColor="@color/black"
+                android:ellipsize="end"
+                android:layout_marginRight="10dp"
+                android:text="3 Miếng Gà + 1 Gà Popcorn (Vừa)/ 03 Gà Miếng Nuggets "
+                android:textSize="16dp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
+
         
-        <TextView
-            android:id="@+id/product_Name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Product Name"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            android:textStyle="bold"/>
 
-        <ImageView
-            android:id="@+id/product_Image"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_below="@+id/product_Name"
-            android:scaleType="centerCrop"
-            android:layout_marginTop="2dp"/>
-
-        <TextView
-            android:id="@+id/product_Price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/product_Image"
-            android:text="Product Price"
-            android:textAlignment="center"
-            android:textSize="18dp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/product_Description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/product_Price"
-            android:text="Product Desciption"
-            android:textAlignment="center"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:paddingTop="2dp"/>
-    </RelativeLayout>
-        
-
-</androidx.cardview.widget.CardView>
+</androidx.appcompat.widget.LinearLayoutCompat>
