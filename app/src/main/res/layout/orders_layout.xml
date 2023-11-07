@@ -15,7 +15,7 @@
 
         <TextView
             android:id="@+id/order_user_name"
-            android:layout_width="160dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
@@ -26,10 +26,11 @@
 
         <TextView
             android:id="@+id/order_phone_number"
-            android:layout_width="160dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
+            android:layout_alignParentTop="false"
             android:layout_below="@+id/order_user_name"
             android:gravity="left"
             android:text="Phone Number"
