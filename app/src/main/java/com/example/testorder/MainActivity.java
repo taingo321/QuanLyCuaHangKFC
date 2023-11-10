@@ -3,6 +3,7 @@ package com.example.testorder;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private Button login_button, register_button;
     private ProgressDialog loadingBar;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

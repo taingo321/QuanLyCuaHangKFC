@@ -2,6 +2,7 @@ package com.example.testorder;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,13 +38,14 @@ public class HomeActivity extends AppCompatActivity {
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
+        //Hai cột
+        layoutManager = new GridLayoutManager(this,2);
         recyclerView.setLayoutManager(layoutManager);
-
         fabCart = findViewById(R.id.fabCart);
         logout = findViewById(R.id.logout);
         profile = findViewById(R.id.profile);
         orders = findViewById(R.id.orders);
+
     }
 
     @Override

@@ -3,10 +3,12 @@ package com.example.testorder;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.rey.material.widget.CheckBox;
 
 import io.paperdb.Paper;
-import kotlin.internal.IntrinsicConstEvaluation;
+//import kotlin.internal.IntrinsicConstEvaluation;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -34,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     private String parentDBName = "Users";
     private CheckBox remember_me_checkbox;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
 
         loadingBar = new ProgressDialog(this);
 
-        remember_me_checkbox = findViewById(R.id.remember_me_checkbox);
+        //remember_me_checkbox = findViewById(R.id.remember_me_checkbox);
         Paper.init(this);
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -96,16 +99,16 @@ public class LoginActivity extends AppCompatActivity {
             loadingBar.setMessage("Please wait while we are checking");
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
-
             AllowAccessToAccount(phone, password);
         }
     }
 
     private void AllowAccessToAccount(String phone, String password) {
-        if (remember_me_checkbox.isChecked()){
-            Paper.book().write(Prevalent.UserPhoneKey, phone);
-            Paper.book().write(Prevalent.UserPasswordKey, password);
-        }
+//        if (remember_me_checkbox.isChecked()){
+//
+//        }
+        Paper.book().write(Prevalent.UserPhoneKey, phone);
+        Paper.book().write(Prevalent.UserPasswordKey, password);
 
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
