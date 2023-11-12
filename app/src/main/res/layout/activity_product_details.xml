@@ -5,68 +5,101 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:numberpicker="http://schemas.android.com/apk/res-auto"
-    tools:context=".ProductDetailsActivity">
+    tools:context=".ProductDetailsActivity"
+    android:background="@color/white">
+
 
     <ImageView
         android:id="@+id/product_Image_Detail"
-        android:layout_width="288dp"
-        android:layout_height="234dp"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/happy_family_social_2"/>
-    
+        android:src="@drawable/happy_family_social_2" />
+
     <TextView
         android:id="@+id/product_Name_Detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/product_Image_Detail"
         android:text="Product Name"
+        android:padding="27sp"
         android:textStyle="bold"
-        android:textSize="15sp"
-        android:gravity="center"
-        android:layout_marginTop="10dp"/>
+        android:textSize="30sp"
+        android:gravity="left"
+        android:layout_marginTop="10dp"
+        android:textColor="#A3080B"/>
+
+    <TextView
+        android:id="@+id/product_Information_Detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/product_Price_Detail"
+        android:layout_marginTop="-25dp"
+        android:gravity="left"
+        android:padding="27sp"
+        android:text="Product Information Detail"
+        android:textColor="#A3080B"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/product_Description_Detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/product_Name_Detail"
+        android:layout_below="@+id/product_Information_Detail"
+        android:layout_marginTop="-25dp"
+        android:gravity="left"
+        android:padding="27sp"
         android:text="Product Description"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:layout_marginTop="10dp"/>
+        android:textColor="#A3080B"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/product_Price_Detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/product_Description_Detail"
+        android:layout_below="@+id/product_Name_Detail"
+        android:layout_marginTop="-33dp"
+        android:layout_marginBottom="-3dp"
+        android:gravity="left"
+        android:padding="27sp"
+        android:paddingTop="15dp"
         android:text="Product Price"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:gravity="center"
-        android:layout_marginTop="10dp"/>
+        android:textColor="#A3080B"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <com.travijuu.numberpicker.library.NumberPicker
         android:id="@+id/number_picker"
         android:layout_width="130dp"
         android:layout_height="40dp"
-        android:layout_below="@id/product_Price_Detail"
-        android:layout_centerInParent="true"
-        numberpicker:min="1"
-        numberpicker:max="100"
-        numberpicker:value="-5"
-        numberpicker:unit="1"
-        numberpicker:focusable="false" />
-
-
-    <Button
-        android:id="@+id/fabAddProductToCart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="20dp"
+        app:custom_layout="@layout/number_picker_custom_layout"
+        numberpicker:focusable="false"
+        numberpicker:max="100"
+        numberpicker:min="1"
+        numberpicker:unit="1"
+        numberpicker:value="-5" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/fabAddProductToCart"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
         android:text="ADD TO CART"
-        android:textSize="18dp"/>
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:background="@drawable/rounded_button"
+        />
 
 </RelativeLayout>
