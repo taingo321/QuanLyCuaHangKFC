@@ -23,7 +23,6 @@
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
         android:hint="Phone Number"
-        android:inputType="number"
         android:textSize="18sp"
         android:textStyle="bold"/>
 
