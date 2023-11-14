@@ -31,7 +31,6 @@ import java.util.HashMap;
 
 
 public class AdminAddNewProductActivity extends AppCompatActivity {
-
     private String CategoryName, Description, Price, Pname, saveCurrentDate, saveCurrentTime;
     private Button AddNewProduct;
     private ImageView SelectProductImage;
@@ -47,11 +46,10 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_add_new_product);
 
-
         CategoryName = getIntent().getExtras().get("category").toString();
+
         ProductImagesRef = FirebaseStorage.getInstance().getReference().child("Product Images");
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
-
 
         AddNewProduct = findViewById(R.id.add_new_product);
         SelectProductImage = findViewById(R.id.select_product_image);
@@ -69,7 +67,6 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         AddNewProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 ValidateProductData();
             }
         });
@@ -98,14 +95,18 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         Pname = ProductName.getText().toString();
 
         if (ImageUri == null){
-            Toast.makeText(this, "Product Image is Mandatory...", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(Description)) {
-            Toast.makeText(this, "Please Enter Product Description...", Toast.LENGTH_SHORT).show();
-        }else if (TextUtils.isEmpty(Pname)) {
-            Toast.makeText(this, "Please Enter Product Name...", Toast.LENGTH_SHORT).show();
-        }else if (TextUtils.isEmpty(Price)) {
-            Toast.makeText(this, "Please Enter Product Price...", Toast.LENGTH_SHORT).show();
-        }else {
+            Toast.makeText(this, "Vui lòng chọn hình ảnh sản phẩm...", Toast.LENGTH_SHORT).show();
+        }
+
+        else if (TextUtils.isEmpty(Pname)) {
+            Toast.makeText(this, "Vui lòng nhập tên sản phẩm...", Toast.LENGTH_SHORT).show();
+        }
+
+        else if (TextUtils.isEmpty(Price)) {
+            Toast.makeText(this, "Vui lòng nhập giá sản phẩm...", Toast.LENGTH_SHORT).show();
+        }
+
+        else {
             StoreProductInformation();
         }
     }
@@ -135,7 +136,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                Toast.makeText(AdminAddNewProductActivity.this, "Product Image Uploaded Successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdminAddNewProductActivity.this, "Tải hình ảnh thành công", Toast.LENGTH_SHORT).show();
 
                 Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                     @Override
@@ -153,7 +154,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
                         if (task.isSuccessful()){
                             downloadImageUrl = task.getResult().toString();
 
-                            Toast.makeText(AdminAddNewProductActivity.this, "Product Image Url Saved To Database Successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AdminAddNewProductActivity.this, "Đã lưu hình ảnh sản phẩm", Toast.LENGTH_SHORT).show();
 
                             SaveProductInfoToDatabase();
                         }
@@ -181,7 +182,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
                         if (task.isSuccessful()){
                             Intent intent = new Intent(AdminAddNewProductActivity.this, AdminCategoryActivity.class);
                             startActivity(intent);
-                            Toast.makeText(AdminAddNewProductActivity.this, "Product is Added Successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AdminAddNewProductActivity.this, "Thêm sản phẩm thành công", Toast.LENGTH_SHORT).show();
                         }else {
                             String message = task.getException().toString();
                             Toast.makeText(AdminAddNewProductActivity.this, "Error: " + message, Toast.LENGTH_SHORT).show();
