@@ -9,7 +9,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Danh sách sản phẩm"
+        android:text="DANH SÁCH SẢN PHẨM"
         android:textColor="@color/black"
         android:textSize="26dp"
         android:textStyle="bold"

@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.rey.material.widget.FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Fragment.ThucUongFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="THỨC UỐNG - TRÁNG MIỆNG"
+        android:textColor="@color/black"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_menu_drinks_deserts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Bán Nước"
-        android:textSize="30dp"/>
+        android:nestedScrollingEnabled="false"/>
 
-</com.rey.material.widget.FrameLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
