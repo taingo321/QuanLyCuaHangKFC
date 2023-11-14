@@ -10,8 +10,8 @@ import android.widget.ImageView;
 
 public class AdminCategoryActivity extends AppCompatActivity {
 
-    private ImageView t_shirts, sports_t_shirts, female_dresses, sweaters,
-            glasses, purses_bags, hats, shoes;
+    private ImageView chickens, burgers_rices_spaghetties, snacks, drinks_deserts,
+            speacial_offers, brand_new, combos;
 
     private Button check_orders;
 
@@ -20,14 +20,14 @@ public class AdminCategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_category);
 
-        t_shirts = findViewById(R.id.t_shirts);
-        sports_t_shirts = findViewById(R.id.sports_t_shirts);
-        female_dresses = findViewById(R.id.female_dresses);
-        sweaters = findViewById(R.id.sweaters);
-        glasses = findViewById(R.id.glasses);
-        purses_bags = findViewById(R.id.purses_bags);
-        hats = findViewById(R.id.hats);
-        shoes = findViewById(R.id.shoes);
+        chickens = findViewById(R.id.chickens);
+        burgers_rices_spaghetties = findViewById(R.id.burgers_rices_spaghetties);
+        snacks = findViewById(R.id.snacks);
+        drinks_deserts = findViewById(R.id.drinks_deserts);
+        speacial_offers = findViewById(R.id.speacial_offers);
+        brand_new = findViewById(R.id.brand_new);
+        combos = findViewById(R.id.combos);
+
         check_orders = findViewById(R.id.check_orders);
 
         check_orders.setOnClickListener(new View.OnClickListener() {
@@ -39,74 +39,65 @@ public class AdminCategoryActivity extends AppCompatActivity {
             }
         });
 
-        t_shirts.setOnClickListener(new View.OnClickListener() {
+        chickens.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
-                intent.putExtra("category", "tShirts");
+                intent.putExtra("category", "chickens");
                 startActivity(intent);
             }
         });
 
-        sports_t_shirts.setOnClickListener(new View.OnClickListener() {
+        burgers_rices_spaghetties.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
-                intent.putExtra("category", "Sports tShirts");
+                intent.putExtra("category", "burgers_rices_spaghetties");
                 startActivity(intent);
             }
         });
 
-        female_dresses.setOnClickListener(new View.OnClickListener() {
+        snacks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
-                intent.putExtra("category", "Female Dresses");
+                intent.putExtra("category", "snacks");
                 startActivity(intent);
             }
         });
 
-        sweaters.setOnClickListener(new View.OnClickListener() {
+        drinks_deserts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
-                intent.putExtra("category", "Sweaters");
+                intent.putExtra("category", "drinks_deserts");
                 startActivity(intent);
             }
         });
 
-        glasses.setOnClickListener(new View.OnClickListener() {
+        speacial_offers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
-                intent.putExtra("category", "Glasses");
+                intent.putExtra("category", "speacial_offers");
                 startActivity(intent);
             }
         });
 
-        purses_bags.setOnClickListener(new View.OnClickListener() {
+        brand_new.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
-                intent.putExtra("category", "Purses Bags");
+                intent.putExtra("category", "brand_new");
                 startActivity(intent);
             }
         });
 
-        hats.setOnClickListener(new View.OnClickListener() {
+        combos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
-                intent.putExtra("category", "Hats");
-                startActivity(intent);
-            }
-        });
-
-        shoes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
-                intent.putExtra("category", "Shoes");
+                intent.putExtra("category", "combos");
                 startActivity(intent);
             }
         });

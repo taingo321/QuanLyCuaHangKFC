@@ -59,12 +59,12 @@ public class AllFragment extends Fragment {
     private DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    private FloatingActionButton fabCart, logout, profile, orders;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View v = inflater.inflate(R.layout.fragment_all, container, false);
 
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
@@ -111,7 +111,5 @@ public class AllFragment extends Fragment {
         };
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-
-
     }
 }
