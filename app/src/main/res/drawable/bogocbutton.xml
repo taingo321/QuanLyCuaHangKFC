@@ -4,12 +4,12 @@
     android:shape="rectangle">
 
     <!-- Set màu nền-->
-    <solid android:color="@color/design_default_color_error" />
+    <solid android:color="@color/red" />
 
     <!-- đặt thuộc tính màu và độ rộng của đường viền -->
     <stroke
         android:width="2dp"
-        android:color="@color/design_default_color_error" >
+        android:color="@color/red" >
     </stroke>
 
     <!-- các thuộc tính căn chỉnh-->
