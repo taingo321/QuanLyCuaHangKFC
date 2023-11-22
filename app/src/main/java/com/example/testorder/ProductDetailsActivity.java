@@ -136,7 +136,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
                     product_Name_Detail.setText(products.getPname());
                     product_Description_Detail.setText(products.getDescription());
-                    product_Price_Detail.setText(products.getPrice());
+
+                    product_Price_Detail.setText(products.getPrice()+ " đ");
+
                     Picasso.get().load(products.getImage()).into(product_Image_Detail);
                 }
             }
