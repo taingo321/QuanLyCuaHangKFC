@@ -1,18 +1,18 @@
 package com.example.testorder.Model;
 
 public class Products {
-    private String pname, description, price, image, category, pid, date, time;
+    private String pname, description, price, image, category, puid, date, time;
 
     public Products() {
     }
 
-    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time) {
+    public Products(String pname, String description, String price, String image, String category, String puid, String date, String time) {
         this.pname = pname;
         this.description = description;
         this.price = price;
         this.image = image;
         this.category = category;
-        this.pid = pid;
+        this.puid = puid;
         this.date = date;
         this.time = time;
     }
@@ -57,12 +57,12 @@ public class Products {
         this.category = category;
     }
 
-    public String getPid() {
-        return pid;
+    public String getPuid() {
+        return puid;
     }
 
-    public void setPid(String pid) {
-        this.pid = pid;
+    public void setPuid(String puid) {
+        this.puid = puid;
     }
 
     public String getDate() {
@@ -81,3 +81,4 @@ public class Products {
         this.time = time;
     }
 }
+

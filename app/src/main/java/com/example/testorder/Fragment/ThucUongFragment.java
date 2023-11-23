@@ -54,7 +54,7 @@ public class ThucUongFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_thuc_uong, container, false);
 
-        ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
+        ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products1");
         recyclerView = v.findViewById(R.id.recycler_menu_drinks_deserts);
         recyclerView.setHasFixedSize(true);
         layoutManager = new GridLayoutManager(getContext(), 4);
@@ -82,7 +82,7 @@ public class ThucUongFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(getContext(), ProductDetailsActivity.class);
-                        intent.putExtra("pid", model.getPid());
+                        intent.putExtra("puid", model.getPuid());
                         startActivity(intent);
                     }
                 });
