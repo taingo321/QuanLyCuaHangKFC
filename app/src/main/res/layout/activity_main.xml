@@ -71,7 +71,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="1200dp"
-        android:layout_height="233dp"
+        android:layout_height="183dp"
         android:layout_marginTop="615dp"
         android:background="@drawable/nenkfc"
         app:layout_constraintBottom_toBottomOf="parent"
