@@ -170,7 +170,7 @@
             android:layout_height="80dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:text="ADD TO CART"
+            android:text="Thêm vào giỏ hàng"
             android:textColor="@color/white"
             android:textSize="25dp"
             android:background="@drawable/rounded_button"
