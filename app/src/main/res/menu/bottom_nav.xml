@@ -6,11 +6,6 @@
         android:icon="@drawable/home_24"/>
 
     <item
-        android:id="@+id/LichSu"
-        android:title="Lịch Sử"
-        android:icon="@drawable/order"/>
-
-    <item
         android:id="@+id/GioHang"
         android:title="Giỏ Hàng"
         android:icon="@drawable/cart"/>

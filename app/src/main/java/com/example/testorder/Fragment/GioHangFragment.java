@@ -92,8 +92,6 @@ public class GioHangFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                txtTotalAmount.setText("Tổng tiền = " + String.valueOf(overTotalPrice) + "đ");
-
                 Intent intent = new Intent(getContext(), ConfirmFinalOrderActivity.class);
                 intent.putExtra("Tổng tiền", String.valueOf(overTotalPrice));
                 startActivity(intent);
