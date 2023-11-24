@@ -110,16 +110,28 @@ public class ProductDetailsActivity extends AppCompatActivity {
         cartMap.put("time", saveCurrentTime);
         cartMap.put("quantity", quantity);
 
-        cartListRef.child("Admin View").child(Prevalent.currentOnlineUser.getPhone()).child("Products1")
+        cartListRef.child("User View")
+                .child(Prevalent.currentOnlineUser.getUsername())
+                .child("Products1")
                 .child(productID).updateChildren(cartMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(ProductDetailsActivity.this, "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(ProductDetailsActivity.this, HomeActivity.class);
-                            startActivity(intent);
-                        }
+                        cartListRef.child("Admin View")
+                                .child(Prevalent.currentOnlineUser.getUsername())
+                                .child("Products1")
+                                .child(productID).updateChildren(cartMap)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()){
+                                            Toast.makeText(ProductDetailsActivity.this, "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(ProductDetailsActivity.this, HomeActivity.class);
+                                            startActivity(intent);
+                                        }
+                                    }
+                                });
+
                     }
                 });
     }
@@ -135,8 +147,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
                     product_Name_Detail.setText(products.getPname());
                     product_Description_Detail.setText(products.getDescription());
-
-                    product_Price_Detail.setText(products.getPrice()+ "đ");
+                    product_Price_Detail.setText(products.getPrice());
 
                     Picasso.get().load(products.getImage()).into(product_Image_Detail);
                 }
@@ -149,3 +160,4 @@ public class ProductDetailsActivity extends AppCompatActivity {
         });
     }
 }
+

@@ -69,7 +69,7 @@ public class GioHangFragment extends Fragment {
 
     private RecyclerView cart_list;
     private RecyclerView.LayoutManager layoutManager;
-    private Button next_button;
+    private Button confirm_button;
     private TextView txtTotalAmount;
     private int overTotalPrice = 0;
 
@@ -86,16 +86,16 @@ public class GioHangFragment extends Fragment {
         cart_list.setLayoutManager(layoutManager);
         txtTotalAmount = view.findViewById(R.id.total_price);
 
-        next_button = view.findViewById(R.id.next_button);
+        confirm_button = view.findViewById(R.id.confirm_button);
 
-        next_button.setOnClickListener(new View.OnClickListener() {
+        confirm_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                txtTotalAmount.setText("Total Price = $ " + String.valueOf(overTotalPrice));
+                txtTotalAmount.setText("Tổng tiền = " + String.valueOf(overTotalPrice) + "đ");
 
                 Intent intent = new Intent(getContext(), ConfirmFinalOrderActivity.class);
-                intent.putExtra("Total Price", String.valueOf(overTotalPrice));
+                intent.putExtra("Tổng tiền", String.valueOf(overTotalPrice));
                 startActivity(intent);
                 getActivity().finish();
             }
@@ -112,14 +112,14 @@ public class GioHangFragment extends Fragment {
 
         FirebaseRecyclerOptions<Cart> options =
                 new FirebaseRecyclerOptions.Builder<Cart>()
-                        .setQuery(cartListRef.child("Admin View").child(Prevalent.currentOnlineUser.getPhone()).child("Products"), Cart.class).build();
+                        .setQuery(cartListRef.child("User View").child(Prevalent.currentOnlineUser.getUsername()).child("Products1"), Cart.class).build();
 
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull Cart model) {
                 holder.product_Name_Cart.setText(model.getPname());
-                holder.product_Quantity_Cart.setText("Quantity = " + model.getQuantity());
-                holder.product_Price_Cart.setText("Price = " + model.getPrice() + "$");
+                holder.product_Quantity_Cart.setText(model.getQuantity());
+                holder.product_Price_Cart.setText(model.getPrice() + "đ");
 
                 int oneTypeProductPrice = ((Integer.valueOf(model.getPrice()))) * Integer.valueOf(model.getQuantity());
                 overTotalPrice = overTotalPrice + oneTypeProductPrice;
@@ -128,30 +128,31 @@ public class GioHangFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         CharSequence options[] = new CharSequence[]{
-                                "Edit",
-                                "Remove"
+                                "Chỉnh sửa",
+                                "Xóa"
                         };
                         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setTitle("Cart Options:");
+                        builder.setTitle("Chỉnh sửa hóa đơn:");
 
                         builder.setItems(options, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 if (i == 0){
                                     Intent intent = new Intent(getContext(), ProductDetailsActivity.class);
-                                    intent.putExtra("pid", model.getPid());
+                                    intent.putExtra("puid", model.getPuid());
                                     startActivity(intent);
                                 }
                                 if (i == 1){
-                                    cartListRef.child("Admin View")
-                                            .child("Products")
-                                            .child(model.getPid())
+                                    cartListRef.child("User View")
+                                            .child(Prevalent.currentOnlineUser.getUsername())
+                                            .child("Products1")
+                                            .child(model.getPuid())
                                             .removeValue()
                                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()){
-                                                        Toast.makeText(getContext(), "Item Removed", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(getContext(), "Đã xóa khỏi giỏ hàng", Toast.LENGTH_SHORT).show();
 
                                                         Intent intent = new Intent(getContext(), HomeActivity.class);
                                                         startActivity(intent);

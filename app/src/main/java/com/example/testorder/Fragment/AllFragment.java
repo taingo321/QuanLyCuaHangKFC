@@ -85,7 +85,7 @@ public class AllFragment extends Fragment {
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
                 holder.product_Name.setText(model.getPname());
                 holder.product_Description.setText(model.getDescription());
-                holder.product_Price.setText("Giá = " + model.getPrice() + "đ");
+                holder.product_Price.setText(model.getPrice() + "đ");
                 Picasso.get().load(model.getImage()).into(holder.product_Image);
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -110,3 +110,4 @@ public class AllFragment extends Fragment {
         adapter.startListening();
     }
 }
+

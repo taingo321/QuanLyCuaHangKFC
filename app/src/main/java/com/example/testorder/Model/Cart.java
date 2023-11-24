@@ -1,25 +1,24 @@
 package com.example.testorder.Model;
 
 public class Cart {
-    private String pid, pname, price, quantity, discount;
+    private String puid, pname, price, quantity;
 
     public Cart() {
     }
 
-    public Cart(String pid, String pname, String price, String quantity, String discount) {
-        this.pid = pid;
+    public Cart(String puid, String pname, String price, String quantity) {
+        this.puid = puid;
         this.pname = pname;
         this.price = price;
         this.quantity = quantity;
-        this.discount = discount;
     }
 
-    public String getPid() {
-        return pid;
+    public String getPuid() {
+        return puid;
     }
 
-    public void setPid(String pid) {
-        this.pid = pid;
+    public void setPuid(String puid) {
+        this.puid = puid;
     }
 
     public String getPname() {
@@ -44,13 +43,5 @@ public class Cart {
 
     public void setQuantity(String quantity) {
         this.quantity = quantity;
-    }
-
-    public String getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(String discount) {
-        this.discount = discount;
     }
 }
