@@ -41,7 +41,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
 
-        productID = getIntent().getStringExtra("pid");
+        productID = getIntent().getStringExtra("puid");
 
         fabAddProductToCart = findViewById(R.id.fabAddProductToCart);
         product_Image_Detail = findViewById(R.id.product_Image_Detail);
@@ -68,14 +68,14 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private void checkIfProductExistsInCart(final String productID, final String quantity) {
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
 
-        cartListRef.child("Products").child(productID).addListenerForSingleValueEvent(new ValueEventListener() {
+        cartListRef.child("Products1").child(productID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Integer quantityInteger = snapshot.child("quantity").getValue(Integer.class);
                 if (quantityInteger != null) {
                     int existingQuantity = quantityInteger.intValue();
                     String newQuantity = existingQuantity + quantity;
-                    cartListRef.child("Products").child(productID).child("quantity").setValue(newQuantity);
+                    cartListRef.child("Products1").child(productID).child("quantity").setValue(newQuantity);
                 } else {
                     // Sản phẩm chưa tồn tại trong giỏ hàng, thêm mới
                     addProductToCart(productID, quantity);
@@ -102,22 +102,21 @@ public class ProductDetailsActivity extends AppCompatActivity {
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
 
         final HashMap<String, Object> cartMap = new HashMap<>();
-        cartMap.put("pid", productID);
+        cartMap.put("puid", productID);
         cartMap.put("pname", product_Name_Detail.getText().toString());
         cartMap.put("price", product_Price_Detail.getText().toString());
         cartMap.put("description", product_Description_Detail.getText().toString());
         cartMap.put("date", saveCurrentDate);
         cartMap.put("time", saveCurrentTime);
         cartMap.put("quantity", quantity);
-        cartMap.put("discount", "");
 
-        cartListRef.child("Admin View").child(Prevalent.currentOnlineUser.getPhone()).child("Products")
+        cartListRef.child("Admin View").child(Prevalent.currentOnlineUser.getPhone()).child("Products1")
                 .child(productID).updateChildren(cartMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(ProductDetailsActivity.this, "Added to Cart", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ProductDetailsActivity.this, "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(ProductDetailsActivity.this, HomeActivity.class);
                             startActivity(intent);
                         }
@@ -126,7 +125,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     }
 
     private void getProductDetails(String productID) {
-        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference().child("Products");
+        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference().child("Products1");
 
         productsRef.child(productID).addValueEventListener(new ValueEventListener() {
             @Override
@@ -137,7 +136,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     product_Name_Detail.setText(products.getPname());
                     product_Description_Detail.setText(products.getDescription());
 
-                    product_Price_Detail.setText(products.getPrice()+ " đ");
+                    product_Price_Detail.setText(products.getPrice()+ "đ");
 
                     Picasso.get().load(products.getImage()).into(product_Image_Detail);
                 }
