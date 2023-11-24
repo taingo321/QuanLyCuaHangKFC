@@ -14,9 +14,4 @@
         android:id="@+id/GioHang"
         android:title="Giỏ Hàng"
         android:icon="@drawable/cart"/>
-
-    <item
-        android:id="@+id/Profile"
-        android:title="Cá nhân"
-        android:icon="@drawable/profile"/>
 </menu>

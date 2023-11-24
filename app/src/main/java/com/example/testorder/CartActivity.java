@@ -31,14 +31,14 @@ public class CartActivity extends AppCompatActivity {
 
     private RecyclerView cart_list;
     private RecyclerView.LayoutManager layoutManager;
-    private Button next_button;
+    private Button confirm_button;
     private TextView txtTotalAmount;
     private int overTotalPrice = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cart);
+        setContentView(R.layout.fragment_gio_hang);
 
         cart_list = findViewById(R.id.cart_list);
         cart_list.setHasFixedSize(true);
@@ -46,16 +46,16 @@ public class CartActivity extends AppCompatActivity {
         cart_list.setLayoutManager(layoutManager);
         txtTotalAmount = findViewById(R.id.total_price);
 
-        next_button = findViewById(R.id.next_button);
+        confirm_button = findViewById(R.id.confirm_button);
 
-        next_button.setOnClickListener(new View.OnClickListener() {
+        confirm_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                txtTotalAmount.setText("Total Price = $ " + String.valueOf(overTotalPrice));
+                txtTotalAmount.setText("Tổng tiền = " + String.valueOf(overTotalPrice) + " đ");
 
                 Intent intent = new Intent(CartActivity.this, ConfirmFinalOrderActivity.class);
-                intent.putExtra("Total Price", String.valueOf(overTotalPrice));
+                intent.putExtra("Tổng tiền", String.valueOf(overTotalPrice));
                 startActivity(intent);
                 finish();
             }
@@ -71,14 +71,14 @@ public class CartActivity extends AppCompatActivity {
 
         FirebaseRecyclerOptions<Cart> options =
                 new FirebaseRecyclerOptions.Builder<Cart>()
-                        .setQuery(cartListRef.child("Admin View").child(Prevalent.currentOnlineUser.getPhone()).child("Products"), Cart.class).build();
+                        .setQuery(cartListRef.child("Admin View").child(Prevalent.currentOnlineUser.getUsername()).child("Products1"), Cart.class).build();
 
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull Cart model) {
                 holder.product_Name_Cart.setText(model.getPname());
-                holder.product_Quantity_Cart.setText("Quantity = " + model.getQuantity());
-                holder.product_Price_Cart.setText("Price = " + model.getPrice() + "$");
+                holder.product_Quantity_Cart.setText(model.getQuantity());
+                holder.product_Price_Cart.setText(model.getPrice());
 
                 int oneTypeProductPrice = ((Integer.valueOf(model.getPrice()))) * Integer.valueOf(model.getQuantity());
                 overTotalPrice = overTotalPrice + oneTypeProductPrice;
@@ -87,30 +87,31 @@ public class CartActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         CharSequence options[] = new CharSequence[]{
-                                "Edit",
-                                "Remove"
+                                "Chỉnh sửa",
+                                "Xóa"
                         };
                         AlertDialog.Builder builder = new AlertDialog.Builder(CartActivity.this);
-                        builder.setTitle("Cart Options:");
+                        builder.setTitle("Chỉnh sửa hóa đơn:");
 
                         builder.setItems(options, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 if (i == 0){
                                     Intent intent = new Intent(CartActivity.this, ProductDetailsActivity.class);
-                                    intent.putExtra("pid", model.getPid());
+                                    intent.putExtra("puid", model.getPuid());
                                     startActivity(intent);
                                 }
                                 if (i == 1){
                                     cartListRef.child("Admin View")
-                                            .child("Products")
-                                            .child(model.getPid())
+                                            .child(Prevalent.currentOnlineUser.getUsername())
+                                            .child("Products1")
+                                            .child(model.getPuid())
                                             .removeValue()
                                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()){
-                                                        Toast.makeText(CartActivity.this, "Item Removed", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(CartActivity.this, "Đã xóa khỏi giỏ hàng", Toast.LENGTH_SHORT).show();
 
                                                         Intent intent = new Intent(CartActivity.this, HomeActivity.class);
                                                         startActivity(intent);
