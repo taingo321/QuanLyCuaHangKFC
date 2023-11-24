@@ -35,8 +35,6 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId() == R.id.TrangChu){
                     loadFragment(new TrangChuFragment());
-                } else if (item.getItemId() == R.id.LichSu) {
-                    loadFragment(new LichSuFragment());
                 } else if (item.getItemId() == R.id.GioHang) {
                     loadFragment(new GioHangFragment());
                 }
